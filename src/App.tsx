@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { PageComponentA } from './PageComponentA'
+import { ContentStoreProvider, ContentStoreType } from './ContentStoreContext'
+import { AuthoringContextProvider } from './AuthoringContext'
+import { AuthoringNotice, ContentStoreViewer } from './AuthorableDevTools'
+
+let contentStoreDefaults:ContentStoreType = require('./contentStore.json')
 
 const App: React.FC = () => {
+  const [ store, setStore ] = useState(contentStoreDefaults)
+  const [ authoring, setAuthoring ] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ContentStoreProvider value={[ store, setStore]}>
+        <AuthoringContextProvider value={[ authoring, setAuthoring ]}>
+          <PageComponentA contentId='pageA' />
+          <AuthoringNotice />
+          <ContentStoreViewer />
+        </AuthoringContextProvider>
+      </ContentStoreProvider>
     </div>
   );
 }

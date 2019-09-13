@@ -1,0 +1,8 @@
+{
+  "/:Paragraph:tabberTab#2": "\"Second tab... for now!\"",
+  "/:MultiTab:tabber": "{\"tabs\":[\"Tab#1\",\"Tab#2\"],\"numberOfTabs\":2}",
+  "/:Header:header": "\"Home Page\"",
+  "/:Paragraph:lower": "\"Text at the bottom of the page.\"",
+  "/:Paragraph:tabberTab#1": "\"The first tab of several.\"",
+  "/:Paragraph:primary": "\"This is our primary paragraph of text for the page.\""
+}
